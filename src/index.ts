@@ -1,8 +1,6 @@
-import { type Preset, presetIcons } from "unocss";
+import { presetIcons } from "unocss";
 
-export default function presetPappIcon(
-  iconsUrl = "https://icons.iap.my.id"
-): Preset {
+export default function presetPappIcon(iconsUrl = "https://icons.iap.my.id") {
   return {
     name: "preset-papp-icon",
     presets: [
