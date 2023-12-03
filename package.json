@@ -32,9 +32,7 @@
     "unbuild": "^2.0.0"
   },
   "peerDependencies": {
-    "typescript": "^5.0.0"
-  },
-  "dependencies": {
+    "typescript": "^5.0.0",
     "unocss": "^0.57.7"
   }
 }
