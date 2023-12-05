@@ -4,7 +4,8 @@ export default function presetPappIcon(iconsUrl = "https://icons.iap.my.id") {
   return presetIcons({
     cdn: "https://esm.sh/",
     extraProperties: {
-      display: "block",
+      display: "inline-block",
+      "vertical-align": "middle",
     },
     collections: {
       fab: async (iconName: string) =>
