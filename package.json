@@ -1,8 +1,16 @@
 {
   "name": "@point-hub/preset-papp-icon",
-  "version": "0.0.2",
-  "description": "Preset icons for unocss",
-  "type": "module",
+  "version": "0.0.3",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "devDependencies": {
+    "bun-types": "latest",
+    "unbuild": "^3.0.1"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0",
+    "unocss": "^0.65.1"
+  },
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -10,29 +18,21 @@
       "import": "./dist/index.mjs"
     }
   },
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
+  "description": "Preset icons for unocss",
   "files": [
     "dist"
   ],
-  "license": "MIT",
   "keywords": [
     "unocss",
     "unocss-preset"
   ],
+  "license": "MIT",
   "publishConfig": {
     "access": "public"
   },
   "scripts": {
     "build": "unbuild"
   },
-  "devDependencies": {
-    "bun-types": "latest",
-    "unbuild": "^2.0.0"
-  },
-  "peerDependencies": {
-    "typescript": "^5.0.0",
-    "unocss": "^0.57.7"
-  }
+  "type": "module",
+  "types": "./dist/index.d.ts"
 }
