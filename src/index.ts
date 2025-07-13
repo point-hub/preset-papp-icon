@@ -1,7 +1,7 @@
 import { type PresetFactory, presetIcons } from "unocss";
 import { fetch } from 'undici';
 
-export default function presetPappIcon(iconsUrl = "https://icons.iap.my.id") {
+export const presetPappIcon = (iconsUrl = "https://icons.iap.my.id") => {
   return presetIcons({
     cdn: "https://esm.sh/",
     extraProperties: {
@@ -69,6 +69,6 @@ export default function presetPappIcon(iconsUrl = "https://icons.iap.my.id") {
   }) as PresetFactory<any>;
 }
 
-function fontawesome(iconsUrl: string) {
+const fontawesome = (iconsUrl: string) => {
   return `${iconsUrl}/fontawesome/6/svgs`;
 }
