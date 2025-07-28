@@ -1,74 +1,58 @@
-import { type PresetFactory, presetIcons } from "unocss";
-import { fetch } from 'undici';
+import { presetIcons, PresetOrFactory } from 'unocss'
 
-export const presetPappIcon = (iconsUrl = "https://icons.iap.my.id") => {
-  return presetIcons({
-    cdn: "https://esm.sh/",
-    extraProperties: {
-      display: "inline-block",
-      "vertical-align": "middle",
-    },
-    collections: {
-      fab: async (iconName: string) =>
-        await fetch(`${fontawesome(iconsUrl)}/brands/${iconName}.svg`).then(
-          (res) => res.text()
-        ),
-      far: async (iconName: string) =>
-        await fetch(`${fontawesome(iconsUrl)}/regular/${iconName}.svg`).then(
-          (res) => res.text()
-        ),
-      fas: async (iconName: string) =>
-        await fetch(`${fontawesome(iconsUrl)}/solid/${iconName}.svg`).then(
-          (res) => res.text()
-        ),
-      fal: async (iconName: string) =>
-        await fetch(`${fontawesome(iconsUrl)}/light/${iconName}.svg`).then(
-          (res) => res.text()
-        ),
-      fat: async (iconName: string) =>
-        await fetch(`${fontawesome(iconsUrl)}/thin/${iconName}.svg`).then(
-          (res) => res.text()
-        ),
-      fad: async (iconName: string) =>
-        await fetch(`${fontawesome(iconsUrl)}/duotone/${iconName}.svg`).then(
-          (res) => res.text()
-        ),
-      fasr: async (iconName: string) =>
-        await fetch(
-          `${fontawesome(iconsUrl)}/sharp-regular/${iconName}.svg`
-        ).then((res) => res.text()),
-      fass: async (iconName: string) =>
-        await fetch(
-          `${fontawesome(iconsUrl)}/sharp-solid/${iconName}.svg`
-        ).then((res) => res.text()),
-      fasl: async (iconName: string) =>
-        await fetch(
-          `${fontawesome(iconsUrl)}/sharp-light/${iconName}.svg`
-        ).then((res) => res.text()),
-    },
-    customizations: {
-      transform(svg, collection) {
-        if (
-          [
-            "fab",
-            "far",
-            "fas",
-            "fal",
-            "fat",
-            "fad",
-            "fasr",
-            "fass",
-            "fasl",
-          ].includes(collection)
-        )
-          return svg.replace("path", 'path fill="currentColor"');
-
-        return svg;
-      },
-    },
-  }) as PresetFactory<any>;
+const fetchWithRetry = async (url: string, retries = 3, delay = 500): Promise<any> => {
+  for (let attempt = 1; attempt <= retries; attempt++) {
+    try {
+      const res = await fetch(url)
+      if (!res.ok) throw new Error(`HTTP ${res.status}`)
+      return await res.json()
+    } catch (err) {
+      console.warn(`Attempt ${attempt} failed for ${url}: ${err}`)
+      if (attempt < retries) {
+        await new Promise(res => setTimeout(res, delay))
+      } else {
+        console.error(`Failed to fetch ${url} after ${retries} attempts.`)
+        return {} // fallback to empty collection
+      }
+    }
+  }
 }
 
-const fontawesome = (iconsUrl: string) => {
-  return `${iconsUrl}/fontawesome/6/svgs`;
+export const presetPappIcon = async (): Promise<PresetOrFactory> => {
+  const urls = {
+    fab: 'https://icons.iap.my.id/fontawesome/6/json/fontawesome-brands.json',
+    fad: 'https://icons.iap.my.id/fontawesome/6/json/fontawesome-duotone.json',
+    fal: 'https://icons.iap.my.id/fontawesome/6/json/fontawesome-light.json',
+    far: 'https://icons.iap.my.id/fontawesome/6/json/fontawesome-regular.json',
+    fas: 'https://icons.iap.my.id/fontawesome/6/json/fontawesome-solid.json',
+    fat: 'https://icons.iap.my.id/fontawesome/6/json/fontawesome-thin.json',
+    fasl: 'https://icons.iap.my.id/fontawesome/6/json/fontawesome-sharp-light.json',
+    fasr: 'https://icons.iap.my.id/fontawesome/6/json/fontawesome-sharp-regular.json',
+    fass: 'https://icons.iap.my.id/fontawesome/6/json/fontawesome-sharp-solid.json',
+    fast: 'https://icons.iap.my.id/fontawesome/6/json/fontawesome-sharp-thin.json',
+  }
+
+  const collections: Record<string, any> = {}
+
+  await Promise.all(
+    Object.entries(urls).map(async ([name, url]) => {
+      collections[name] = await fetchWithRetry(url, 3, 500)
+    })
+  )
+
+  return presetIcons({
+    extraProperties: {
+      display: 'inline-block',
+      'vertical-align': 'middle',
+    },
+    collections,
+    customizations: {
+      transform(svg, collection) {
+        if (collection in collections) {
+          return svg.replace('path', 'path fill="currentColor"')
+        }
+        return svg
+      },
+    },
+  })
 }

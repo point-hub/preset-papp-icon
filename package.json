@@ -1,9 +1,10 @@
 {
   "name": "@point-hub/preset-papp-icon",
-  "version": "0.0.5",
+  "version": "0.0.8",
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
   "devDependencies": {
+    "@types/node": "^24.0.13",
     "bun-types": "latest",
     "unbuild": "^3.5.0"
   },
@@ -34,8 +35,5 @@
     "build": "unbuild"
   },
   "type": "module",
-  "types": "./dist/index.d.ts",
-  "dependencies": {
-    "undici": "^7.11.0"
-  }
+  "types": "./dist/index.d.ts"
 }
