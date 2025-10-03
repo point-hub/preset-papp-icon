@@ -3,6 +3,9 @@
   "workspaces": {
     "": {
       "name": "@point-hub/preset-papp-icon",
+      "dependencies": {
+        "ofetch": "^1.4.1",
+      },
       "devDependencies": {
         "@types/node": "^24.6.2",
         "bun-types": "latest",

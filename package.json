@@ -3,6 +3,9 @@
   "version": "0.0.10",
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
+  "dependencies": {
+    "ofetch": "^1.4.1"
+  },
   "devDependencies": {
     "@types/node": "^24.6.2",
     "bun-types": "latest",
