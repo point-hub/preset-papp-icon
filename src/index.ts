@@ -41,6 +41,7 @@ export const presetPappIcon = async (): Promise<PresetOrFactory> => {
   )
 
   return presetIcons({
+    cdn: 'https://esm.sh/',
     extraProperties: {
       display: 'inline-block',
       'vertical-align': 'middle',
