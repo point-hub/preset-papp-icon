@@ -34,7 +34,10 @@ const fetchWithRetry = async (
         await new Promise(res => setTimeout(res, delay))
       } else {
         console.error(`Failed to fetch ${url} after ${retries} attempts.`)
-        return {}
+        return {
+          icons: {},
+          prefix: '',
+        };
       }
     }
   }
