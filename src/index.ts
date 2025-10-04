@@ -54,7 +54,7 @@ export const presetPappIcon = (
   options: PappIconOptions = {}
 ): PresetOrFactory => {
   const {
-    baseUrl = 'https://icons.iap.my.id/fontawesome/6/json',
+    baseUrl = 'https://assets.r2.lab.biz.id/icons',
     retries = 3,
     delay = 500,
     collections: customCollections,
@@ -62,16 +62,23 @@ export const presetPappIcon = (
 
   // Default FA collections
   const defaultCollections: Record<string, string> = {
-    fab:  `${baseUrl}/fontawesome-brands.json`,
-    fad:  `${baseUrl}/fontawesome-duotone.json`,
-    fal:  `${baseUrl}/fontawesome-light.json`,
-    far:  `${baseUrl}/fontawesome-regular.json`,
-    fas:  `${baseUrl}/fontawesome-solid.json`,
-    fat:  `${baseUrl}/fontawesome-thin.json`,
-    fasl: `${baseUrl}/fontawesome-sharp-light.json`,
-    fasr: `${baseUrl}/fontawesome-sharp-regular.json`,
-    fass: `${baseUrl}/fontawesome-sharp-solid.json`,
-    fast: `${baseUrl}/fontawesome-sharp-thin.json`,
+    'fa7-brands': `${baseUrl}/fa7/fa7-brands.json`,
+    'fa7-duotone': `${baseUrl}/fa7/fa7-duotone.json`,
+    'fa7-duotone-light': `${baseUrl}/fa7/fa7-duotone-light.json`,
+    'fa7-duotone-regular': `${baseUrl}/fa7/fa7-duotone-regular.json`,
+    'fa7-duotone-thin': `${baseUrl}/fa7/fa7-duotone-thin.json`,
+    'fa7-solid': `${baseUrl}/fa7/fa7-solid.json`,
+    'fa7-light': `${baseUrl}/fa7/fa7-light.json`,
+    'fa7-regular': `${baseUrl}/fa7/fa7-regular.json`,
+    'fa7-thin': `${baseUrl}/fa7/fa7-thin.json`,
+    'fa7-sharp-solid': `${baseUrl}/fa7/fa7-sharp-solid.json`,
+    'fa7-sharp-light': `${baseUrl}/fa7/fa7-sharp-light.json`,
+    'fa7-sharp-regular': `${baseUrl}/fa7/fa7-sharp-regular.json`,
+    'fa7-sharp-thin': `${baseUrl}/fa7/fa7-sharp-thin.json`,
+    'fa7-sharp-duotone-solid': `${baseUrl}/fa7/fa7-sharp-duotone-solid.json`,
+    'fa7-sharp-duotone-light': `${baseUrl}/fa7/fa7-sharp-duotone-light.json`,
+    'fa7-sharp-duotone-regular': `${baseUrl}/fa7/fa7-sharp-duotone-regular.json`,
+    'fa7-sharp-duotone-thin': `${baseUrl}/fa7/fa7-sharp-duotone-thin.json`,
   }
 
   const urls = { ...defaultCollections, ...customCollections }
