@@ -35,7 +35,7 @@ export interface PappIconOptions {
  * Built-in default icon collections available out of the box.
  */
 const defaultCollections: Record<string, IIconCollection> = {
-  fa7: {
+  fa: {
     baseUrl: 'https://assets.r2.lab.biz.id/icons/fontawesome',
     versions: ['7.3.1'],
     styles: ['solid', 'regular', 'light', 'thin',
@@ -44,7 +44,7 @@ const defaultCollections: Record<string, IIconCollection> = {
       'sharp-duotone-solid', 'sharp-duotone-regular', 'sharp-duotone-light', 'sharp-duotone-thin',
       'brands'],
   },
-  mc4: {
+  mc: {
     baseUrl: 'https://assets.r2.lab.biz.id/icons/mingcute',
     versions: ['4.0.0'],
     styles: ['regular', 'filled'],
@@ -54,12 +54,12 @@ const defaultCollections: Record<string, IIconCollection> = {
     versions: ['1.79.0'],
     styles: [],
   },
-  ph2: {
+  ph: {
     baseUrl: 'https://assets.r2.lab.biz.id/icons/phosphor',
     versions: ['2.1.0'],
     styles: ['bold', 'duotone', 'fill', 'light', 'regular', 'thin'],
   },
-  hi2: {
+  hi: {
     baseUrl: 'https://assets.r2.lab.biz.id/icons/heroicons',
     versions: ['2.2.0'],
     styles: ['solid', 'outline'],
