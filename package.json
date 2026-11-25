@@ -1,16 +1,16 @@
 {
   "name": "@point-hub/preset-papp-icon",
-  "version": "0.0.13",
+  "version": "0.1.0",
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
   "dependencies": {
     "ofetch": "^1.5.1"
   },
   "devDependencies": {
-    "@types/node": "^26.1.2",
+    "@types/node": "^26.6.7",
     "bun-types": "latest",
     "unbuild": "^3.6.1",
-    "vitest": "^4.1.10"
+    "vitest": "^5.1.1"
   },
   "peerDependencies": {
     "typescript": "^5.8.3 || ^7.0.0",
